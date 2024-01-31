@@ -13,18 +13,23 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-//@Table(name = "tutorials")
 public class Book {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
+
+    @Column(unique=true)
     private String title;
+
     private String description;
+
     private int level;
+
     private boolean published;
+
     @Temporal(TemporalType.DATE)
     private Date createdAt;
+
     public Book(String title, String description, int level, boolean published, Date createdAt) {
         this.title = title;
         this.description = description;

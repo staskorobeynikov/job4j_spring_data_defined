@@ -83,4 +83,10 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
   @Transactional
   void deleteAllByCreatedAtBefore(Date date);
+
+  List<Book> findByTitle(String title);
+
+  List<Book> findByTitleAndLevel(String title, int level);
+
+  List<Book> findByLevelGreaterThanEqualAndLevelLessThanEqual(int startAt, int finishAt);
 }

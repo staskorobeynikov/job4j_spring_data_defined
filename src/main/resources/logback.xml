@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+    <!-- CONSOLE APPENDER -->
+    <appender name="ConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>My File Appender: %d %p %c{0} %m %n</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- LOGGER -->
+    <logger name="ru.job4j.logging.controller" level="INFO">
+        <appender-ref ref="ConsoleAppender" />
+    </logger>
+
+    <!-- DISABLE DEFAULT LOGGER (since no appenders are defined) -->
+    <root level="INFO"> </root>
+</configuration>
