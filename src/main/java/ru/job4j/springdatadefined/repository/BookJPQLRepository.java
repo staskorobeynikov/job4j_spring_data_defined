@@ -14,28 +14,28 @@ public interface BookJPQLRepository extends JpaRepository<Book, Long> {
     Optional<Book> findById(Long id);
 
     @Query("""
-            select book from Book as book
-            where book.level >= ?1 and book.level <= ?2
+            SELECT book FROM Book AS book
+            WHERE book.level >= ?1 AND book.level <= ?2
             """)
     List<Book> findByLevelInRange(int startAt, int finishAt);
 
     @Query("""
-            select book from Book as book
-            where book.title >= :title
+            SELECT book FROM Book AS book
+            WHERE book.title >= :title
             """)
     Optional<Book> findByTitle(@Param("title") String title);
 
     @Modifying(clearAutomatically = true)
     @Query("""
-            update Book book set book.title = :title
-            where book.id = :id
+            UPDATE Book book SET book.title = :title
+            WHERE book.id = :id
             """)
     int updateTitle(@Param("title") String title, @Param("id") Long id);
 
     @Modifying(clearAutomatically = true)
     @Query(value = """
             UPDATE book SET description = :description
-            where id = :id
+            WHERE id = :id
             """, nativeQuery = true)
     int updateDesc(@Param("description") String description, @Param("id") Long id);
 }
